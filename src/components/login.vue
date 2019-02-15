@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="login-container">
     <div id="login-box">
       <div id="avatar-box">
         <img src="../assets/logo.png">
@@ -17,7 +17,7 @@
         </el-form-item>
 
         <el-row>
-          <el-col offset="15">
+          <el-col :offset="15">
             <el-button type="primary" @click="login">登录</el-button>
             <el-button type="info" @click="reset">重置</el-button>
           </el-col>
@@ -32,8 +32,8 @@ export default {
   data() {
     return {
       loginForm: {
-        username: '',
-        password: ''
+        username: 'admin',
+        password: '123456'
       },
       rules2: {
         username: [{ required: true, message: '请输入名称', trigger: 'blur' }],
@@ -63,41 +63,46 @@ export default {
 </script>
 
 <style lang="less" scoped>
-#login-box {
-  width: 450px;
-  height: 304px;
-  background: #fff;
-  border-radius: 3px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  #avatar-box {
-    width: 150px;
-    height: 150px;
-    border: 1px solid #eee;
-    box-sizing: border-box;
+#login-container {
+  background: #2b4b6b;
+  overflow: hidden;
+  height: 100%;
+  #login-box {
+    width: 450px;
+    height: 304px;
+    background: #fff;
+    border-radius: 3px;
     position: absolute;
     left: 50%;
+    top: 50%;
     transform: translate(-50%, -50%);
-    border-radius: 75px;
-    padding: 10px;
-    box-sizing: border-box;
-    box-shadow: 0 0 10px #eee;
-    background: #fff;
-    img {
-      width: 130px;
-      height: 130px;
-      border-radius: 65px;
-      background: #eee;
+    #avatar-box {
+      width: 150px;
+      height: 150px;
+      border: 1px solid #eee;
+      box-sizing: border-box;
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 75px;
+      padding: 10px;
+      box-sizing: border-box;
+      box-shadow: 0 0 10px #eee;
+      background: #fff;
+      img {
+        width: 130px;
+        height: 130px;
+        border-radius: 65px;
+        background: #eee;
+      }
     }
-  }
-  .el-form {
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    padding: 20px;
-    box-sizing: border-box;
+    .el-form {
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      padding: 20px;
+      box-sizing: border-box;
+    }
   }
 }
 </style>
