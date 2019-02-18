@@ -14,12 +14,12 @@
           background-color="#333744"
           text-color="#fff"
           active-text-color="#409EFF"
-          :style="istrue?'width:65px;':'width:200px;'"
           :collapse="istrue"
           :collapse-transition="false"
           :router="true"
+          :unique-opened="true"
         >
-          <el-submenu :index="item.id+''" v-for="(item,k) in menusList" :key="item.id">
+          <el-submenu :index="item.id+''" v-for="(item,k) in menusList" :key="item.id" :style="istrue?'width:65px;':'width:200px;'">
             <template slot="title">
               <i :class="'iconfont icon-' +menuicon[k]"></i>
               <span>{{item.authName}}</span>
@@ -31,7 +31,9 @@
           </el-submenu>
         </el-menu>
       </el-aside>
-      <el-main><router-view/></el-main>
+      <el-main>
+        <router-view/>
+      </el-main>
     </el-container>
   </el-container>
 </template>
@@ -51,7 +53,6 @@ export default {
   methods: {
     async getmenuslist() {
       const { data: ret } = await this.$http.get('menus')
-      console.log(ret)
       if (ret.meta.status === 200) {
         this.menusList = ret.data
       }
